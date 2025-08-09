@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>HANDPHONE TERKUNCI</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: monospace;
+      overflow: hidden;
+    }
+
+    body {
+      background: url('hayyu.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      color: red;
+    }
+
+    /* Overlay gelap biar teks tetap jelas */
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75); /* 75% gelap */
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3vh;
+      color: red;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0.5; }
+    }
+
+    input {
+      padding: 10px;
+      font-size: 2vh;
+      margin: 20px 0;
+      background: black;
+      border: 2px solid red;
+      color: red;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: red;
+      color: black;
+      font-weight: bold;
+      font-size: 2vh;
+      border: none;
+      cursor: pointer;
+    }
+
+    .locked-msg {
+      color: red;
+      font-size: 2vh;
+      margin-top: 10px;
+      animation: flicker 0.3s infinite;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Latar hitam transparan di atas gambar -->
+  <div class="overlay"></div>
+
+  <!-- Konten -->
+  <div class="container">
+    <h1>⚠️ WARNING ⚠️<br>HANDPHONE ANDA TERKUNCI</h1>
+    <input type="password" id="pin" placeholder="Masukkan PIN untuk membuka" />
+    <button onclick="kunci()">Buka Kunci</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function kunci() {
+      const out = document.getElementById('output');
+      const teks = document.createElement('div');
+      teks.classList.add('locked-msg');
+      teks.textContent = 'TERKUNCI!!!';
+      out.appendChild(teks);
+    }
+  </script>
+</body>
+</html>
